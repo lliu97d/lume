@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { getStoryBySlug } from "@/data/stories";
 import Lightbox from "@/components/Lightbox";
 import { getImageUrl } from "@/lib/images";
+import ImageWithLoader from "@/components/ImageWithLoader";
 
 export default function StoryPage() {
   const params = useParams();
@@ -84,7 +84,7 @@ export default function StoryPage() {
             className="group cursor-pointer"
           >
             <div className="relative mb-4 aspect-[4/5] w-full overflow-hidden rounded-sm bg-white shadow-sm transition-all duration-500 hover:shadow-xl dark:bg-zinc-900">
-              <Image
+              <ImageWithLoader
                 src={getImageUrl(photo.src)}
                 alt={photo.title}
                 fill

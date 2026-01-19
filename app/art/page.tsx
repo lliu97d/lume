@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Lightbox, { LightboxItem } from "@/components/Lightbox";
 import { getImageUrl } from "@/lib/images";
+import ImageWithLoader from "@/components/ImageWithLoader";
 
 type ArtLabel = "all" | "digital" | "traditional" | "mixed";
 
@@ -97,7 +97,7 @@ export default function ArtPage() {
             className="group relative cursor-pointer overflow-hidden rounded-sm bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl dark:bg-zinc-900"
           >
             <div className="relative aspect-square w-full overflow-hidden">
-              <Image
+              <ImageWithLoader
                 src={getImageUrl(artwork.src)}
                 alt={artwork.title}
                 fill

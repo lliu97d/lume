@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import Lightbox, { LightboxItem } from "@/components/Lightbox";
 import { stories } from "@/data/stories";
 import { getImageUrl } from "@/lib/images";
+import ImageWithLoader from "@/components/ImageWithLoader";
 
 type ViewMode = "labels" | "stories";
 type PhotoLabel = "all" | "portrait" | "street" | "landscape";
@@ -132,7 +132,7 @@ export default function PhotoPage() {
                 className="group relative cursor-pointer overflow-hidden rounded-sm bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl dark:bg-zinc-900"
               >
                 <div className="relative aspect-[4/5] w-full overflow-hidden">
-                  <Image
+                  <ImageWithLoader
                     src={getImageUrl(photo.src)}
                     alt={photo.title}
                     fill
@@ -161,7 +161,7 @@ export default function PhotoPage() {
               className="group block"
             >
               <div className="relative mb-4 aspect-[3/2] w-full overflow-hidden rounded-sm bg-white shadow-sm transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl dark:bg-zinc-900">
-                <Image
+                <ImageWithLoader
                   src={getImageUrl(story.coverImage)}
                   alt={story.title}
                   fill

@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { getImageUrl } from "@/lib/images";
+import ImageWithLoader from "@/components/ImageWithLoader";
 
 const featuredWorks = [
   {
@@ -30,7 +30,7 @@ export default function Home() {
       <section className="relative flex h-screen items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <Image
+          <ImageWithLoader
             src={getImageUrl("/DSCF2877.JPG")}
             alt="Hero background"
             fill
@@ -140,7 +140,7 @@ export default function Home() {
               >
                 <Link href={work.href} className="group block">
                   <div className="relative aspect-[3/4] overflow-hidden bg-warm-gray">
-                    <Image
+                    <ImageWithLoader
                       src={getImageUrl(work.src)}
                       alt={work.title}
                       fill

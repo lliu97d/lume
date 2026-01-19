@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Lightbox, { LightboxItem } from "@/components/Lightbox";
 import { getImageUrl } from "@/lib/images";
+import ImageWithLoader from "@/components/ImageWithLoader";
 
 const works: LightboxItem[] = [
   {
@@ -64,7 +64,7 @@ export default function OtherPage() {
             className="group cursor-pointer"
           >
             <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-sm bg-white shadow-sm transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl dark:bg-zinc-900">
-              <Image
+              <ImageWithLoader
                 src={getImageUrl(work.src)}
                 alt={work.title}
                 fill

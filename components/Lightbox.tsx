@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useCallback } from "react";
 import { getImageUrl } from "@/lib/images";
+import ImageWithLoader from "@/components/ImageWithLoader";
 
 export interface LightboxItem {
   src: string;
@@ -119,7 +119,7 @@ export default function Lightbox({
       {/* Main image area */}
       <div className="flex flex-1 items-center justify-center p-4 pb-0">
         <div className="relative h-full w-full max-w-5xl">
-          <Image
+          <ImageWithLoader
             src={getImageUrl(currentItem.src)}
             alt={currentItem.title}
             fill
@@ -156,7 +156,7 @@ export default function Lightbox({
                   : "opacity-50 hover:opacity-100"
               }`}
             >
-              <Image
+              <ImageWithLoader
                 src={getImageUrl(item.src)}
                 alt={item.title}
                 fill
