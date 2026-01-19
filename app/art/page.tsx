@@ -1,51 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Lightbox, { LightboxItem } from "@/components/Lightbox";
+import Lightbox from "@/components/Lightbox";
+import { artworks, artFilters, ArtLabel } from "@/data/artworks";
 import { getImageUrl } from "@/lib/images";
 import ImageWithLoader from "@/components/ImageWithLoader";
-
-type ArtLabel = "all" | "digital" | "traditional" | "mixed";
-
-const artworks: LightboxItem[] = [
-  {
-    src: "/DSCF2961.JPG",
-    title: "Chromatic Dreams",
-    label: "Digital",
-    description: "An exploration of color and form through digital manipulation, creating dreamlike landscapes.",
-  },
-  {
-    src: "/DSCF3102.JPG",
-    title: "Brushwork Study",
-    label: "Traditional",
-    description: "Traditional brushwork techniques applied to contemporary subjects, bridging past and present.",
-  },
-  {
-    src: "/DSCF3741.JPG",
-    title: "Collage No. 5",
-    label: "Mixed Media",
-    description: "Layered textures and found materials come together to create new visual narratives.",
-  },
-  {
-    src: "/DSCF4113.JPG",
-    title: "Geometric Harmony",
-    label: "Digital",
-    description: "Mathematical precision meets artistic intuition in this study of geometric relationships.",
-  },
-  {
-    src: "/DSCF2877.JPG",
-    title: "Abstract Forms",
-    label: "Traditional",
-    description: "Organic shapes emerge from controlled chaos, revealing hidden patterns in nature.",
-  },
-];
-
-const filterLabels: { value: ArtLabel; label: string }[] = [
-  { value: "all", label: "All" },
-  { value: "digital", label: "Digital" },
-  { value: "traditional", label: "Traditional" },
-  { value: "mixed", label: "Mixed Media" },
-];
 
 export default function ArtPage() {
   const [activeFilter, setActiveFilter] = useState<ArtLabel>("all");
@@ -55,7 +14,11 @@ export default function ArtPage() {
   const filteredArtworks =
     activeFilter === "all"
       ? artworks
-      : artworks.filter((a) => a.label.toLowerCase() === activeFilter || (activeFilter === "mixed" && a.label === "Mixed Media"));
+      : artworks.filter(
+          (a) =>
+            a.label.toLowerCase() === activeFilter ||
+            (activeFilter === "mixed" && a.label === "Mixed Media")
+        );
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -73,7 +36,7 @@ export default function ArtPage() {
 
       {/* Filter Pills */}
       <div className="mb-12 flex flex-wrap gap-3">
-        {filterLabels.map((filter) => (
+        {artFilters.map((filter) => (
           <button
             key={filter.value}
             onClick={() => setActiveFilter(filter.value)}

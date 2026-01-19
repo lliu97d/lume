@@ -2,59 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Lightbox, { LightboxItem } from "@/components/Lightbox";
+import Lightbox from "@/components/Lightbox";
 import { stories } from "@/data/stories";
+import { photos, photoFilters, PhotoLabel } from "@/data/photos";
 import { getImageUrl } from "@/lib/images";
 import ImageWithLoader from "@/components/ImageWithLoader";
 
 type ViewMode = "labels" | "stories";
-type PhotoLabel = "all" | "portrait" | "street" | "landscape";
-
-const photos: LightboxItem[] = [
-  {
-    src: "/DSCF1244.JPG",
-    title: "Morning Light",
-    label: "Portrait",
-    description: "Soft morning light filtering through the window, capturing a quiet moment of reflection.",
-  },
-  {
-    src: "/DSCF1249.JPG",
-    title: "Urban Lines",
-    label: "Street",
-    description: "The geometric patterns of city architecture create a rhythm of light and shadow.",
-  },
-  {
-    src: "/DSCF2112.JPG",
-    title: "Mountain Mist",
-    label: "Landscape",
-    description: "Early morning fog rolling through the mountain valleys, creating layers of depth.",
-  },
-  {
-    src: "/DSCF2632.JPG",
-    title: "Candid Moment",
-    label: "Portrait",
-    description: "An unguarded moment caught in natural light, revealing genuine emotion.",
-  },
-  {
-    src: "/DSCF2715.JPG",
-    title: "City Reflections",
-    label: "Street",
-    description: "Rain-soaked streets mirror the city lights, doubling the urban landscape.",
-  },
-  {
-    src: "/DSCF2955.JPG",
-    title: "Endless Horizon",
-    label: "Landscape",
-    description: "Where sky meets earth, the vastness of nature stretches beyond comprehension.",
-  },
-];
-
-const filterLabels: { value: PhotoLabel; label: string }[] = [
-  { value: "all", label: "All" },
-  { value: "portrait", label: "Portrait" },
-  { value: "street", label: "Street" },
-  { value: "landscape", label: "Landscape" },
-];
 
 export default function PhotoPage() {
   const [viewMode, setViewMode] = useState<ViewMode>("labels");
@@ -108,7 +62,7 @@ export default function PhotoPage() {
         <>
           {/* Filter Pills */}
           <div className="mb-12 flex flex-wrap gap-3">
-            {filterLabels.map((filter) => (
+            {photoFilters.map((filter) => (
               <button
                 key={filter.value}
                 onClick={() => setActiveFilter(filter.value)}
