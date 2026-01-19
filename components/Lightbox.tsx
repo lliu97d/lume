@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useCallback } from "react";
+import { getImageUrl } from "@/lib/images";
 
 export interface LightboxItem {
   src: string;
@@ -119,7 +120,7 @@ export default function Lightbox({
       <div className="flex flex-1 items-center justify-center p-4 pb-0">
         <div className="relative h-full w-full max-w-5xl">
           <Image
-            src={currentItem.src}
+            src={getImageUrl(currentItem.src)}
             alt={currentItem.title}
             fill
             className="object-contain"
@@ -156,7 +157,7 @@ export default function Lightbox({
               }`}
             >
               <Image
-                src={item.src}
+                src={getImageUrl(item.src)}
                 alt={item.title}
                 fill
                 className="object-cover"

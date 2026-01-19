@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Lightbox, { LightboxItem } from "@/components/Lightbox";
 import { stories } from "@/data/stories";
+import { getImageUrl } from "@/lib/images";
 
 type ViewMode = "labels" | "stories";
 type PhotoLabel = "all" | "portrait" | "street" | "landscape";
@@ -132,7 +133,7 @@ export default function PhotoPage() {
               >
                 <div className="relative aspect-[4/5] w-full overflow-hidden">
                   <Image
-                    src={photo.src}
+                    src={getImageUrl(photo.src)}
                     alt={photo.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -161,7 +162,7 @@ export default function PhotoPage() {
             >
               <div className="relative mb-4 aspect-[3/2] w-full overflow-hidden rounded-sm bg-white shadow-sm transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl dark:bg-zinc-900">
                 <Image
-                  src={story.coverImage}
+                  src={getImageUrl(story.coverImage)}
                   alt={story.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

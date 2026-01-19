@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Lightbox, { LightboxItem } from "@/components/Lightbox";
+import { getImageUrl } from "@/lib/images";
 
 type ArtLabel = "all" | "digital" | "traditional" | "mixed";
 
@@ -97,7 +98,7 @@ export default function ArtPage() {
           >
             <div className="relative aspect-square w-full overflow-hidden">
               <Image
-                src={artwork.src}
+                src={getImageUrl(artwork.src)}
                 alt={artwork.title}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"

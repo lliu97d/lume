@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { getImageUrl } from "@/lib/images";
 
 const featuredWorks = [
   {
@@ -30,7 +31,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/DSCF2877.JPG"
+            src={getImageUrl("/DSCF2877.JPG")}
             alt="Hero background"
             fill
             className="object-cover"
@@ -140,7 +141,7 @@ export default function Home() {
                 <Link href={work.href} className="group block">
                   <div className="relative aspect-[3/4] overflow-hidden bg-warm-gray">
                     <Image
-                      src={work.src}
+                      src={getImageUrl(work.src)}
                       alt={work.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"

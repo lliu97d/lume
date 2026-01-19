@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { getImageUrl } from "@/lib/images";
 
 export default function AboutPage() {
   return (
@@ -12,7 +13,7 @@ export default function AboutPage() {
         {/* Background Image - Monotone */}
         <div className="absolute inset-0">
           <Image
-            src="/DSCF1244.JPG"
+            src={getImageUrl("/DSCF1244.JPG")}
             alt="Portrait"
             fill
             className="object-cover grayscale"

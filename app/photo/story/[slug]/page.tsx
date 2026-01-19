@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { getStoryBySlug } from "@/data/stories";
 import Lightbox from "@/components/Lightbox";
+import { getImageUrl } from "@/lib/images";
 
 export default function StoryPage() {
   const params = useParams();
@@ -84,7 +85,7 @@ export default function StoryPage() {
           >
             <div className="relative mb-4 aspect-[4/5] w-full overflow-hidden rounded-sm bg-white shadow-sm transition-all duration-500 hover:shadow-xl dark:bg-zinc-900">
               <Image
-                src={photo.src}
+                src={getImageUrl(photo.src)}
                 alt={photo.title}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
